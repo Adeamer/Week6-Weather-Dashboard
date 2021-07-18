@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./Assets/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Header title for the html -->
+    <header class="header">Weather Dashboard</header>
+
+    <!-- Search container with the recent search history -->
+    <div class="searchContainer">
+        <h1 id="search-title">Search for a City:</h1>
+        <form id="search-form">
+            <input class="input is-rounded" id="inputValue" type="text" placeholder="Enter City">
+            <button class="button is-info">Search</button>
+        </form>
+        
+        <div class="recentSearchContainer">
+            <div id="search-history"></div>
+        </div>
+    </div>
+
+    <!-- Results container containing todays weather -->
+    <div class="resultsContainer">
+        <p class="city-name "></p>
+        <img class="icon">
+        <p class="temp"></p>
+        <p class="wind"></p>
+        <p class="humidity"></p>
+        <p class="uv-index"></p>
+    </div>
+
+    <!-- Container for the 5 day forcast -->
+    <div class="forcastContainer">
+        <ul id="forcast"></ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="Assets/script.js"></script>
+</body>
+</html>
