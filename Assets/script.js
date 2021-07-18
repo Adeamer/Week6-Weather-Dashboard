@@ -9,22 +9,22 @@ var APIKey ="5882b925eee672571dd3e84eb144c900";
 var CurrentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q="+inputValue+"&units=metric&appid=5882b925eee672571dd3e84eb144c900";
 
 //saving input value from search bar and storing in local storage.//
-function saveInput(){
+
  SearchBtn.addEventListener("click", function(event){
     event.preventDefault();
-    inputValue = [inputValue.value];
-    localStorage.setItem("City", inputValue);
+    inputValue = inputValue.value;
+    var savedCities= []
+    inputValue.push(savedCities);
+    localStorage.setObj("City", savedCities.value);
     getSavedValue();
- });
-}
+});
 
 //Getting the saved value from Local storage and apending it to the created li element for the recent search history.//
 function getSavedValue(){
-    var getSavedItem = localStorage.getItem("City");
+    var getSavedItem = localStorage.getObj("City");
     var searchHistory = document.createElement("li");
     searchHistoryList.appendChild(searchHistory);
     searchHistory.innerHTML= getSavedItem;
-    saveInput();
 };
 
 
