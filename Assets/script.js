@@ -24,16 +24,19 @@ searchBtn.addEventListener("click", function(event){
     localStorage.setItem("City", JSON.stringify(savedCities));
     var APIKey ="5882b925eee672571dd3e84eb144c900";
     var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q="+ inputValue.value +"&units=metric&appid="+ APIKey;
-    var uviUrl = "https://api.openweathermap.org/data/2.5/onecall?"+ inputValue.value +"&exclude=hourly,daily&appid="+ APIKey;
+    var lat = data.coord.lat;
+    var lon = data.coord.lon;
+    var uviUrl = "https://api.openweathermap.org/data/2.5/onecall?lat="+ lat +"&lon="+ lon +"&exclude=current,minutely,hourly&appid="+ APIKey;
     console.log(uviUrl);
     JSON.parse(localStorage.getItem("City"));
     $.getJSON(requestUrl, function(data){
-        console.log(data);
+        
            var name= data.name;
            var wind= data.wind.speed;
            var temp= Math.floor(data.main.temp);
            var icon="https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
            var humidity= data.main.humidity;
+
         
            $(".city-name").append(name);
            $(".icon").attr("src", icon);
@@ -41,32 +44,27 @@ searchBtn.addEventListener("click", function(event){
            $(".wind").append("Wind Speed: ", wind, " Meters per second");
            $(".humidity").append("Humidity ", humidity, "%");
        })
-    // $.getJSON(uviUrl, function(data){
-    //     console.log(data);
-    //     var uvIndex = 
-    //     var latlong = data.
-    // })
+
+    $.getJSON(uviUrl, function(data){
+        console.log(data);
+        
+    })
     getSavedValue();
 });
 
-//inputing current weather into the the results variable//
-// searchBtn.addEventListener("click", function(event){
-//     event.preventDefault();
-// };
+
+    
 
 
 
-// function handleSave(key){
-//     var timeValue = document.getElementById(key).value
-//     localStorage.setItem(key,timeValue);
-//   }
+
   
-  function parsistData(string){
-    if (!localStorage.getItem(string.id)) {
-        return false;
-    }
-    return localStorage.getItem(string.id);
-  };
+//   function parsistData(string){
+//     if (!localStorage.getItem(string.id)) {
+//         return false;
+//     }
+//     return localStorage.getItem(string.id);
+//   };
   
 
 
