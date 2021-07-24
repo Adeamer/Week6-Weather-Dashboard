@@ -5,40 +5,6 @@ var searchHistoryList = document.getElementById("search-history");
 var results = document.querySelector("resultsContainer");
 
 
-//Declaring variables for the API data from Open Weather.Org//
-var APIKey ="5882b925eee672571dd3e84eb144c900";
-var currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q="+ inputValue +"&units=metric&appid="+ APIKey;
-var WeatherForcast = "https://api.openweathermap.org/data/2.5/weather?q="+ inputValue +"&units=metric&appid=5882b925eee672571dd3e84eb144c900";
-
-//saving input value from search bar and storing in local storage.//
-
-searchBtn.addEventListener("click", function(event){
-    event.preventDefault();
-    var savedCities= []
-    savedCities.push(inputValue.value);
-    localStorage.setItem("City", JSON.stringify(savedCities));
-    JSON.parse(localStorage.getItem("City"));
-    $.getJSON(currentWeatherURL, function(data){
-        console.log(data);
-   
-           var wind= data.wind.speed;
-           var temp= Math.floor(data.main.temp);
-           var icon="https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-       
-           $(".icon").attr("src", icon);
-           $(".temp").append(temp);
-           $(".wind").append(wind, " Meters per second");
-        console.log(wind);
-       })
-   
-    getSavedValue();
-});
-
-//inputing current weather into the the results variable//
-// searchBtn.addEventListener("click", function(event){
-//     event.preventDefault();
-// };
-
 //Getting the saved value from Local storage and apending it to the created li element for the recent search history.//
 function getSavedValue(){
     var SavedCity = JSON.parse(localStorage.getItem("City"));
@@ -47,6 +13,48 @@ function getSavedValue(){
     searchHistoryList.appendChild(searchHistory);
     searchHistory.innerHTML= SavedCity;
 };
+
+
+//saving input value from search bar and storing in local storage.//
+
+searchBtn.addEventListener("click", function(event){
+    event.preventDefault();
+    var savedCities= []
+    savedCities.push(inputValue.value);
+    localStorage.setItem("City", JSON.stringify(savedCities));
+    var APIKey ="5882b925eee672571dd3e84eb144c900";
+    var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q="+ inputValue.value +"&units=metric&appid="+ APIKey;
+    var uviUrl = "https://api.openweathermap.org/data/2.5/onecall?"+ inputValue.value +"&exclude=hourly,daily&appid="+ APIKey;
+    console.log(uviUrl);
+    JSON.parse(localStorage.getItem("City"));
+    $.getJSON(requestUrl, function(data){
+        console.log(data);
+           var name= data.name;
+           var wind= data.wind.speed;
+           var temp= Math.floor(data.main.temp);
+           var icon="https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+           var humidity= data.main.humidity;
+        
+           $(".city-name").append(name);
+           $(".icon").attr("src", icon);
+           $(".temp").append("Temp: ", temp, " Degrees");
+           $(".wind").append("Wind Speed: ", wind, " Meters per second");
+           $(".humidity").append("Humidity ", humidity, "%");
+       })
+    // $.getJSON(uviUrl, function(data){
+    //     console.log(data);
+    //     var uvIndex = 
+    //     var latlong = data.
+    // })
+    getSavedValue();
+});
+
+//inputing current weather into the the results variable//
+// searchBtn.addEventListener("click", function(event){
+//     event.preventDefault();
+// };
+
+
 
 // function handleSave(key){
 //     var timeValue = document.getElementById(key).value
