@@ -23,4 +23,4 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 ```
 
-Here is the link to the webpage: 
+Here is the link to the webpage: https://adeamer.github.io/Week6-Weather-Dashboard/index
