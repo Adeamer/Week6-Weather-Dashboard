@@ -56,7 +56,7 @@ searchBtn.addEventListener("click", function(event){
            $.getJSON(uviUrl, function(data){
             console.log(data);
             var uvIndex = data.current.uvi;
-            var uvIndexIndicator = document.getElementById("#UV-Index-Indicator");
+            var uvIndexIndicator = document.getElementById("UV-Index-Indicator");
             $(".uv-index").append("UV Index: ", uvIndex);
             if (uvIndex < 3){
                 uvIndexIndicator.style.backgroundColor = "green";
@@ -64,10 +64,11 @@ searchBtn.addEventListener("click", function(event){
                 uvIndexIndicator.style.backgroundColor = "yellow";
             }else if (uvIndex > 6 && uvIndex < 7){
                 uvIndexIndicator.style.backgroundColor = "orange"; 
-            }else {
+            }else if(unIndex > 8 && uvIndex < 10){
                 uvIndexIndicator.style.backgroundColor = "red";
+            }else{
+                uvIndexIndicator.style.display = "none";
             };
-            console.log(uvIndex);
             
             
 
