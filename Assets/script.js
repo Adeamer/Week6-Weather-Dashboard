@@ -72,6 +72,24 @@ searchBtn.addEventListener("click", function(event){
             
             
 
+            var forecastDate = data.daily.dt;
+            var forecastIcon ="https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+            var forecastTemp = Math.floor(data.daily.temp);
+            var forecastWind = data.daily.wind_speed;
+            var forecastHumidity = data.daily.humidity;
+
+            for (var i=0; i < forecastContainer.length; i++){
+                var forecastContainer = document.createElement("li");
+                forecastContainer.setAttribute("id", "forecast-container");
+                $(".date").append(forecastDate);
+                $(".for-icon").attr("src", forecastIcon);
+                $(".for-temp").append(forecastTemp);
+                $(".for-wind").append(forecastWind);
+                $(".for-humidity").append(forecastHumidity);
+            };
+
+
+
             });
        })
 
