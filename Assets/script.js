@@ -19,6 +19,7 @@ function getSavedValue(){
 
 searchBtn.addEventListener("click", function(event){
     event.preventDefault();
+    $("p").empty();
     var savedCities= []
     savedCities.push(inputValue.value);
     localStorage.setItem("City", JSON.stringify(savedCities));
@@ -31,7 +32,7 @@ searchBtn.addEventListener("click", function(event){
 
     //fetching current weather API and displaying data from input value.
     $.getJSON(requestUrl, function(data){
-        
+            
            var name= data.name;
            var wind= data.wind.speed;
            var temp= Math.floor(data.main.temp);
@@ -47,16 +48,18 @@ searchBtn.addEventListener("click", function(event){
            $(".wind").append("Wind Speed: ", wind, " Meters per second");
            $(".humidity").append("Humidity ", humidity, "%");
 
+
            //Pulling UV index and 5 day forecast API
            var uviUrl = "https://api.openweathermap.org/data/2.5/onecall?lat="+ lat +"&lon="+ lon +"&appid="+ APIKey;
            
            //Fetching and formating UV index and 5 days forecast into html.
            $.getJSON(uviUrl, function(data){
             console.log(data);
-            
             var uvIndex = data.current.uvi;
+            var uvIndexIndicator = document.getElementById("#UV-Index-Indicator");
             console.log(uvIndex);
-            $("uv-index").append("UV Index: ", uvIndex);
+            $(".uv-index").append("UV Index: ", uvIndex);
+            
 
             });
        })
@@ -66,7 +69,7 @@ searchBtn.addEventListener("click", function(event){
 });
 
 
-    
+  
 
 
 

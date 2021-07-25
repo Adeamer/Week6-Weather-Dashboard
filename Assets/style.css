@@ -60,12 +60,18 @@
     padding: 10px;
     width: 70vw;
     height: 150px;
-    position: relative;
-    top: 110px;
+    top: 300px;
     font-size: 20px;
     color: black;
+    position: absolute;
 }
 
-#forecast-title {
- 
+.icon {
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ display: inline;
+ position: relative;
+}
+
+p {
+    font-size:large;
 }
