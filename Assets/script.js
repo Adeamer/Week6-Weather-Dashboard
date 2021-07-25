@@ -56,7 +56,16 @@ searchBtn.addEventListener("click", function(event){
            $.getJSON(uviUrl, function(data){
             console.log(data);
             var uvIndex = data.current.uvi;
-            var uvIndexIndicator = document.getElementById("#UV-Index-Indicator");
+            var uvIndexIndicator = data.current.uvi;
+            if (uvIndexIndicator < 3){
+                uvIndexIndicator.style.backgroundColor = "Green";
+            }else if (uvIndexIndicator > 3, < 5){
+                uvIndexIndicator.style.backgroundColor = "Yellow";
+            }else if (uvIndexIndicator > 6, < 7){
+                uvIndexIndicator.style.backgroundColor = "Orange"; 
+            }else (uvIndexIndicator > 8, < 10){
+                uvIndexIndicator.style.backgroundColor = "Red";
+            }
             console.log(uvIndex);
             $(".uv-index").append("UV Index: ", uvIndex);
             
