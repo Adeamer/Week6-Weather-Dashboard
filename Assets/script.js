@@ -50,8 +50,8 @@ searchBtn.addEventListener("click", function(event){
 
 
            //Pulling UV index and 5 day forecast API
-           var uviUrl = "https://api.openweathermap.org/data/2.5/onecall?lat="+ lat +"&lon="+ lon +"&appid="+ APIKey;
-           
+           var uviUrl = "https://api.openweathermap.org/data/2.5/onecall?lat="+ lat +"&lon="+ lon +"&units=metric&appid="+ APIKey;
+           console.log(uviUrl);
            //Fetching and formating UV index and 5 days forecast into html.
            $.getJSON(uviUrl, function(data){
             console.log(data);
@@ -70,22 +70,23 @@ searchBtn.addEventListener("click", function(event){
                 uvIndexIndicator.style.display = "none";
             };
             
+            var forecastContainer = document.createElement("li");
+            forecastContainer.setAttribute("id", "forecast-container");
+
+            var forecastDate = data.daily[0].dt;
+            var forecastIcon = data.daily[0].weather[0].icon;
+            var forecastTemp = Math.floor(data.daily[0].temp);
+            var forecastWind = data.daily[0].wind_speed;
+            var forecastHumidity = data.daily[0].humidity;
             
 
-            var forecastDate = data.daily.dt;
-            var forecastIcon ="https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-            var forecastTemp = Math.floor(data.daily.temp);
-            var forecastWind = data.daily.wind_speed;
-            var forecastHumidity = data.daily.humidity;
-
             for (var i=0; i < forecastContainer.length; i++){
-                var forecastContainer = document.createElement("li");
-                forecastContainer.setAttribute("id", "forecast-container");
+                
                 $(".date").append(forecastDate);
                 $(".for-icon").attr("src", forecastIcon);
-                $(".for-temp").append(forecastTemp);
-                $(".for-wind").append(forecastWind);
-                $(".for-humidity").append(forecastHumidity);
+                $(".for-temp").append("Temp: ", forecastTemp, "Degrees");
+                $(".for-wind").append("Wind Speed", forecastWind, " Meters per second");
+                $(".for-humidity").append("Humidity: ", forecastHumidity, "%");
             };
 
 
