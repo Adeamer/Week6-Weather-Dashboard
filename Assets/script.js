@@ -70,22 +70,22 @@ searchBtn.addEventListener("click", function(event){
                 uvIndexIndicator.style.display = "none";
             };
             
-            var forecastContainer = document.createElement("li");
-            forecastContainer.setAttribute("id", "forecast-container");
+            var forecast = document.getElementById(".forecastContainer");
 
-            var forecastDate = data.daily[0].dt;
-            var forecastIcon = data.daily[0].weather[0].icon;
-            var forecastTemp = Math.floor(data.daily[0].temp);
-            var forecastWind = data.daily[0].wind_speed;
-            var forecastHumidity = data.daily[0].humidity;
-            
+           
 
-            for (var i=0; i < forecastContainer.length; i++){
-                
+            //looping over the forecast container to create the 5 day forecast.
+            for (var i=0; i < forecast.length; i++){
+                var forecastContainer = document.createElement("li");
+                forecastContainer.setAttribute("id", "forecast-container"); var forecastDate = data.daily[0].dt;
+                var forecastIcon = data.daily[0].weather[0].icon;
+                var forecastTemp = Math.floor(data.daily[0].temp);
+                var forecastHumidity = data.daily[0].humidity;
+
                 $(".date").append(forecastDate);
                 $(".for-icon").attr("src", forecastIcon);
                 $(".for-temp").append("Temp: ", forecastTemp, "Degrees");
-                $(".for-wind").append("Wind Speed", forecastWind, " Meters per second");
+                $(".for-wind").append("Wind Speed", forecastWind, " MPS");
                 $(".for-humidity").append("Humidity: ", forecastHumidity, "%");
             };
 
@@ -97,22 +97,4 @@ searchBtn.addEventListener("click", function(event){
   
     getSavedValue();
 });
-
-
-  
-
-
-
-
-  
-//   function parsistData(string){
-//     if (!localStorage.getItem(string.id)) {
-//         return false;
-//     }
-//     return localStorage.getItem(string.id);
-//   };
-  
-
-
-
-  
+ 
