@@ -69,13 +69,15 @@ searchBtn.addEventListener("click", function(event){
             }else{
                 uvIndexIndicator.style.display = "none";
             };
+            console.log(uvIndex);
+            console.log(uvIndexIndicator);
             
         
-            var forecastDate = data.daily[0].dt;
-            var forecastIcon = data.daily[0].weather[0].icon;
-            var forecastTemp = Math.floor(data.daily[0].temp);
-            var forecastWind = data.daily[0].wind_speed;
-            var forecastHumidity = data.daily[0].humidity;
+            var forecastDate = data.daily.dt;
+            var forecastIcon = data.daily.weather.icon;
+            var forecastTemp = Math.floor(data.daily.temp);
+            var forecastWind = data.daily.wind_speed;
+            var forecastHumidity = data.daily.humidity;
 
            
 
