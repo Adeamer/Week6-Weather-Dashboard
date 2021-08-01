@@ -81,15 +81,21 @@ searchBtn.addEventListener("click", function(event){
 
             //looping over the forecast container to create the 5 day forecast.
             for (var i=0; i < 5; i++){
-                var forecastContainer = document.createElement("li");
+                var forecastContainer = document.createElement("div");
                 forecastContainer.setAttribute("id", "forecast-container"); 
                 forecastContainer.style.display = "inline";
+                var forecastInfo = document.createElement("ul");
+                var forecastDat = document.createElement("li");
+                var forecastIco = document.createElement("img");
+                var forecastTem = document.createElement("li");
+                var forecastWin = document.createElement("li");
+                var forecastHum = document.createElement("li");
            
-                $(".date").append(forecastDate);
-                $(".for-icon").attr("src", forecastIcon);
-                $(".for-temp").append("Temp: ", forecastTemp, "Degrees");
-                $(".for-wind").append("Wind Speed", forecastWind, " MPS");
-                $(".for-humidity").append("Humidity: ", forecastHumidity, "%");
+                $(forecastDat).append(forecastDate);
+                $(forecastIco).attr("src", forecastIcon);
+                $(forecastTem).append("Temp: ", forecastTemp, "Degrees");
+                $(forecastWin).append("Wind Speed", forecastWind, " MPS");
+                $(forecastHum).append("Humidity: ", forecastHumidity, "%");
                 console.log(forecast);
             };
 
