@@ -32,7 +32,7 @@ searchBtn.addEventListener("click", function(event){
 
     //fetching current weather API and displaying data from input value.
     $.getJSON(requestUrl, function(data){
-            
+           console.log(data);
            var name= data.name;
            var wind= data.wind.speed;
            var temp= Math.floor(data.main.temp);
@@ -51,7 +51,7 @@ searchBtn.addEventListener("click", function(event){
 
            //Pulling UV index and 5 day forecast API
            var uviUrl = "https://api.openweathermap.org/data/2.5/onecall?lat="+ lat +"&lon="+ lon +"&units=metric&appid="+ APIKey;
-           console.log(uviUrl);
+           
            //Fetching and formating UV index and 5 days forecast into html.
            $.getJSON(uviUrl, function(data){
             console.log(data);
@@ -64,7 +64,7 @@ searchBtn.addEventListener("click", function(event){
                 uvIndexIndicator.style.backgroundColor = "yellow";
             }else if (uvIndex > 6 && uvIndex < 7){
                 uvIndexIndicator.style.backgroundColor = "orange"; 
-            }else if(unIndex > 8 && uvIndex < 10){
+            }else if(uvIndex > 8 && uvIndex < 10){
                 uvIndexIndicator.style.backgroundColor = "red";
             }else{
                 uvIndexIndicator.style.display = "none";
@@ -82,7 +82,7 @@ searchBtn.addEventListener("click", function(event){
             //looping over the forecast container to create the 5 day forecast.
             for (var i=0; i < 5; i++){
                 var forecastContainer = document.createElement("div");
-                forecastContainer.setAttribute("id", "forecast-container"); 
+                forecastContainer.setAttribute("class", "forecast"); 
                 forecastContainer.style.display = "inline";
                 var forecastDat = document.createElement("p");
                 var forecastIco = document.createElement("img");
@@ -94,21 +94,19 @@ searchBtn.addEventListener("click", function(event){
                 forecastIco.innerHTML = forecastIcon;
                 forecastTem.innerHTML = forecastTemp, "Degrees";
                 forecastWin.innerHTML = forecastWind, "MPS";
-                forecastHum.innerHTML = forecastHumidity, "%";
+                forecastHum.innerHTML = forecastHumidity, "%"
                 
                 forecastContainer.appendChild(forecastDat);
                 forecastContainer.appendChild(forecastIco);
                 forecastContainer.appendChild(forecastTem);
                 forecastContainer.appendChild(forecastWin);
                 forecastContainer.appendChild(forecastHum);
-                console.log(forecastContainer);
+                
+                var parentForecastContainer = document.querySelector(".forecastContainer");
 
-                // $(forecastDat).append(forecastDate);
-                // $(forecastIco).attr("src", forecastIcon);
-                // $(forecastTem).append("Temp: ", forecastTemp, "Degrees");
-                // $(forecastWin).append("Wind Speed", forecastWind, " MPS");
-                // $(forecastHum).append("Humidity: ", forecastHumidity, "%");
-                // console.log(forecast);
+                parentForecastContainer.innerHTML = forecastContainer;
+                console.log(parentForecastContainer);
+                
             };
 
 
