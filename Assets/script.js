@@ -95,7 +95,13 @@ searchBtn.addEventListener("click", function(event){
                 forecastTem.innerHTML = forecastTemp, "Degrees";
                 forecastWin.innerHTML = forecastWind, "MPS";
                 forecastHum.innerHTML = forecastHumidity, "%";
-                console.log(forecastHum);
+                
+                forecastContainer.appendChild(forecastDat);
+                forecastContainer.appendChild(forecastIco);
+                forecastContainer.appendChild(forecastTem);
+                forecastContainer.appendChild(forecastWin);
+                forecastContainer.appendChild(forecastHum);
+                console.log(forecastContainer);
 
                 // $(forecastDat).append(forecastDate);
                 // $(forecastIco).attr("src", forecastIcon);
