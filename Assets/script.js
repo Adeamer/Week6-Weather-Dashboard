@@ -69,44 +69,43 @@ searchBtn.addEventListener("click", function(event){
             }else{
                 uvIndexIndicator.style.display = "none";
             };
-            console.log(uvIndex);
-            console.log(uvIndexIndicator);
-            
-        
-            var forecastDate = data.daily.dt;
-            var forecastIcon = data.daily.weather.icon;
-            var forecastTemp = Math.floor(data.daily.temp);
-            var forecastWind = data.daily.wind_speed;
-            var forecastHumidity = data.daily.humidity;
-
-           
+          
 
             //looping over the forecast container to create the 5 day forecast.
             for (var i=0; i < 5; i++){
                 var forecastContainer = document.createElement("div");
                 forecastContainer.setAttribute("class", "forecast"); 
-                forecastContainer.style.display = "inline";
+                forecastContainer.style.display = "flex";
                 var forecastDat = document.createElement("p");
                 var forecastIco = document.createElement("img");
                 var forecastTem = document.createElement("p");
                 var forecastWin = document.createElement("p");
                 var forecastHum = document.createElement("p");
+
                 
-                forecastDat.innerHTML = forecastDate;
-                forecastIco.innerHTML = forecastIcon;
-                forecastTem.innerHTML = forecastTemp, "Degrees";
-                forecastWin.innerHTML = forecastWind, "MPS";
-                forecastHum.innerHTML = forecastHumidity, "%"
+                
+                var forecastDate = data.daily[i].dt;
+                var forecastIcon = "https://openweathermap.org/img/w/" + data.daily[i].weather[0].icon + ".png";
+                var forecastTemp = Math.floor(data.daily[i].temp);
+                var forecastWind = data.daily[i].wind_speed;
+                var forecastHumidity = data.daily[i].humidity;
+                
+                $(forecastDat).append(forecastDate);
+                $(forecastIco).attr("src", forecastIcon);
+                $(forecastTem).append("Temp: ", forecastTemp, " Degrees");
+                $(forecastWin).append("Wind: ", forecastWind, " MPS");
+                $(forecastHum).append("Humidity ", forecastHumidity, "%");
+
                 
                 forecastContainer.appendChild(forecastDat);
                 forecastContainer.appendChild(forecastIco);
                 forecastContainer.appendChild(forecastTem);
                 forecastContainer.appendChild(forecastWin);
                 forecastContainer.appendChild(forecastHum);
-                
+               
                 var parentForecastContainer = document.querySelector(".forecastContainer");
 
-                parentForecastContainer.innerHTML = forecastContainer;
+                parentForecastContainer.appendChild(forecastContainer);
                 console.log(parentForecastContainer);
                 
             };
