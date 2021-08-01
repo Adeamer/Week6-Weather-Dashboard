@@ -84,19 +84,25 @@ searchBtn.addEventListener("click", function(event){
                 var forecastContainer = document.createElement("div");
                 forecastContainer.setAttribute("id", "forecast-container"); 
                 forecastContainer.style.display = "inline";
-                var forecastInfo = document.createElement("ul");
-                var forecastDat = document.createElement("li");
+                var forecastDat = document.createElement("p");
                 var forecastIco = document.createElement("img");
-                var forecastTem = document.createElement("li");
-                var forecastWin = document.createElement("li");
-                var forecastHum = document.createElement("li");
-           
-                $(forecastDat).append(forecastDate);
-                $(forecastIco).attr("src", forecastIcon);
-                $(forecastTem).append("Temp: ", forecastTemp, "Degrees");
-                $(forecastWin).append("Wind Speed", forecastWind, " MPS");
-                $(forecastHum).append("Humidity: ", forecastHumidity, "%");
-                console.log(forecast);
+                var forecastTem = document.createElement("p");
+                var forecastWin = document.createElement("p");
+                var forecastHum = document.createElement("p");
+                
+                forecastDat.innerHTML = forecastDate;
+                forecastIco.innerHTML = forecastIcon;
+                forecastTem.innerHTML = forecastTemp, "Degrees";
+                forecastWin.innerHTML = forecastWind, "MPS";
+                forecastHum.innerHTML = forecastHumidity, "%";
+                console.log(forecastHum);
+
+                // $(forecastDat).append(forecastDate);
+                // $(forecastIco).attr("src", forecastIcon);
+                // $(forecastTem).append("Temp: ", forecastTemp, "Degrees");
+                // $(forecastWin).append("Wind Speed", forecastWind, " MPS");
+                // $(forecastHum).append("Humidity: ", forecastHumidity, "%");
+                // console.log(forecast);
             };
 
 
