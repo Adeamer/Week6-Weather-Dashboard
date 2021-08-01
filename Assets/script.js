@@ -86,7 +86,7 @@ searchBtn.addEventListener("click", function(event){
                 
                 var forecastDate = data.daily[i].dt;
                 var forecastIcon = "https://openweathermap.org/img/w/" + data.daily[i].weather[0].icon + ".png";
-                var forecastTemp = Math.floor(data.daily[i].temp);
+                var forecastTemp = Math.floor(data.daily[i].temp.day);
                 var forecastWind = data.daily[i].wind_speed;
                 var forecastHumidity = data.daily[i].humidity;
                 
