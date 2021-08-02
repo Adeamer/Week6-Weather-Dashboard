@@ -1,5 +1,5 @@
 
-**Week 6 Weather Dashboard**
+# Week 6 Weather Dashboard
 
 ```
 This app allows the user to search for a city and get the current weather as well as a 5 day forecast.
@@ -40,3 +40,8 @@ THEN I am again presented with current and future conditions for that city
 ```
 
 Here is the link to the webpage: https://adeamer.github.io/Week6-Weather-Dashboard/index
+
+Here is screen grab & a short gif of my deployed application:
+
+![image](https://user-images.githubusercontent.com/83004232/127764410-88a6515f-5ea3-4986-8283-77637bcbd725.png)
+

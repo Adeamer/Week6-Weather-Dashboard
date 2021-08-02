@@ -40,7 +40,8 @@ searchBtn.addEventListener("click", function(event){
            var humidity= data.main.humidity;
            var lat = data.coord.lat;
            var lon = data.coord.lon;
-
+           var currentDate = moment();
+           $(".currentDay").text(currentDate.format("dddd MMMM Do YYYY"));
         
            $(".city-name").append(name);
            $(".icon").attr("src", icon);
