@@ -43,8 +43,11 @@ Here is the link to the webpage: https://adeamer.github.io/Week6-Weather-Dashboa
 
 Here is screen grab & a short gif of my deployed application:
 
-![image]
+![image](https://user-images.githubusercontent.com/83004232/132127347-d61ca3a0-8693-475c-9fb0-ae77b3d47d14.png)
 
-![ezgif com-gif-maker (2)]
+![image](https://user-images.githubusercontent.com/83004232/132127580-75378107-aeb0-4d45-b299-0b21462243fa.png)
+
+![Untitled_ Sep 5, 2021 11_26 PM](https://user-images.githubusercontent.com/83004232/132128642-dad8bb7e-3f2d-410c-ba5e-3761d70ad26a.gif)
+
 
 
