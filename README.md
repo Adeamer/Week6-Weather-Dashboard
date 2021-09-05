@@ -39,7 +39,7 @@ THEN I am again presented with current and future conditions for that city
 
 ```
 
-Here is the link to the deployed application: https://adeamer.github.io/Week6-Weather-Dashboard/index
+Here is the link to the deployed application: https://adeamer.github.io/Week6-Weather-Dashboard/
 
 Here is screen grab & a short gif of my deployed application:
 
